@@ -1,0 +1,33 @@
+a {
+  color: black;
+}
+
+.header {
+  padding: 10px 20px;
+  background-color: white;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.nav-right svg {
+  width: 35px;
+}
+
+.cart-banner {
+  padding: 5px 10px;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgb(214, 109, 109);
+}

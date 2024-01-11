@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="wrapper-filter"></div>
+
+  <div *ngIf="isLoading" class="wrapper-loading">
+    <h1 style="margin: 20px 0">Loading...</h1>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <div *ngFor="let product of products" class="wrapper-product">
+    <div class="product-image">
+      <img [src]="product.image" alt="" />
+    </div>
+
+    <div class="product-context">
+      <h3>{{ product.title | slice : 0 : 20 }}</h3>
+      <p>
+        <strong>{{ product.price | currency }}</strong>
+      </p>
+    </div>
+
+    <div class="product-btn">
+      <button (click)="addToCart(product)">Add To Cart</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div *ngIf="products.length === 0" class="wrapper-banner">
+    <h1>Пустая корзина!</h1>
+  </div>
+
+  <div *ngFor="let product of products" class="wrapper-product">
+    <div class="product-image">
+      <img [src]="product.product.image" alt="" />
+    </div>
+
+    <div class="product-context">
+      <h3>{{ product.product.title }}</h3>
+      <p>
+        <strong>{{ product.product.price | currency }}</strong>
+      </p>
+    </div>
+
+    <div>
+      <p>count: {{ product.count }}</p>
+    </div>
+
+    <div class="product-btn">
+      <button (click)="removeToCart(product.product.id)">Remove</button>
+    </div>
+  </div>
+
+  <div *ngIf="products.length !== 0" class="wrapper-total">
+    <h2>Total: {{ count | currency }}</h2>
+  </div>
+</div>

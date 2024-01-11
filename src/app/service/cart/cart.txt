@@ -1,0 +1,58 @@
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { IOrderProduct, IProduct } from 'src/app/interface/IProduct';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CartService {
+  productCart: IOrderProduct[] = [];
+  countMessage = new Subject<number>();
+
+  constructor() {}
+
+  addCart(item: IProduct) {
+    const existingItem = this.productCart.find(
+      (it) => it.product.id === item.id
+    );
+
+    if (!existingItem) {
+      this.productCart.push({
+        product: item,
+        count: 1,
+      });
+    } else {
+      existingItem.count++;
+    }
+
+    this.countMessage.next(
+      this.productCart.reduce((total, item) => total + item.count, 0)
+    );
+  }
+
+  removeCart(id: number) {
+    const existingItem = this.productCart.find((it) => it.product.id === id);
+
+    if (existingItem && existingItem.count > 1) {
+      existingItem.count--;
+    } else {
+      this.productCart = this.productCart.filter(
+        (item) => item.product.id !== id
+      );
+    }
+
+    this.countMessage.next(
+      this.productCart.reduce((total, item) => total + item.count, 0)
+    );
+
+    return this.productCart.reduce((count, product) => {
+      return count + product.product.price * product.count;
+    }, 0);
+  }
+
+  getTotalPrice() {
+    return this.productCart.reduce((count, product) => {
+      return count + product.product.price * product.count;
+    }, 0);
+  }
+}
