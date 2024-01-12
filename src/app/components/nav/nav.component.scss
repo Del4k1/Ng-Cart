@@ -1,9 +1,10 @@
 a {
   color: black;
+  margin: 0 10px;
 }
 
 .header {
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: white;
 }
 
@@ -21,7 +22,7 @@ a {
 }
 
 .nav-right svg {
-  width: 35px;
+  width: 30px;
 }
 
 .cart-banner {
@@ -30,4 +31,11 @@ a {
   text-align: center;
   border-radius: 50%;
   background-color: rgb(214, 109, 109);
+}
+
+.profile {
+  font-size: 17px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #eee;
 }
